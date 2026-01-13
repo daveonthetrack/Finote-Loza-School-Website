@@ -191,11 +191,11 @@ export default function About({ content = {}, seo = {} }) {
           <div className="mt-12 grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, idx) => (
               <Reveal key={testimonial.author} delay={idx * 150}>
-                <div className="card p-6 bg-white/10 backdrop-blur-sm">
-                  <p className="text-gray-100 italic mb-4">"{testimonial.quote}"</p>
-                  <div className="border-t border-white/20 pt-4">
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-gray-300">{testimonial.role}</p>
+                <div className="card p-6 bg-white border border-white/10 shadow-soft">
+                  <p className="text-gray-900 italic mb-4">"{testimonial.quote}"</p>
+                  <div className="border-t border-gray-200 pt-4">
+                    <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                    <p className="text-sm text-gray-600">{testimonial.role}</p>
                   </div>
                 </div>
               </Reveal>
