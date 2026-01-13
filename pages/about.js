@@ -35,11 +35,6 @@ export default function About({ content = {}, seo = {} }) {
             <p className="mt-4 text-xl text-navy-100 max-w-3xl">
               {content['about.hero.subtitle'] || 'Based in Addis Ababa, Ethiopia, Finote Loza School is committed to strong academics, discipline, and a supportive community that helps students thrive.'}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="/admissions" className="btn-primary">Admissions</a>
-              <a href="/online-application" className="btn-secondary bg-white/10 border-white/20 text-white hover:bg-white/15">Apply Online</a>
-              <a href="/contact" className="btn-secondary bg-white/10 border-white/20 text-white hover:bg-white/15">Contact</a>
-            </div>
           </Reveal>
         </div>
       </section>
