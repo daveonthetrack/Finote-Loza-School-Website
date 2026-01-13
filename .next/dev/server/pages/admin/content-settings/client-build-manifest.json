@@ -1,0 +1,5 @@
+{
+  "/admin/content-settings": [
+    "static/chunks/pages/admin/content-settings.js"
+  ]
+}

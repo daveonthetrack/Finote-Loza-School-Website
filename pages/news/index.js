@@ -6,10 +6,49 @@ import Reveal from '@/components/Reveal';
 import { supabase } from '@/lib/supabaseClient';
 import { useState, useEffect } from 'react';
 
-export default function NewsPage({ articles = [], seo = {} }) {
+export default function NewsPage({ articles: initialArticles = [], seo = {} }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [filteredArticles, setFilteredArticles] = useState(articles);
+  const [articles, setArticles] = useState(initialArticles);
+  const [filteredArticles, setFilteredArticles] = useState(initialArticles);
+  const [loading, setLoading] = useState(true);
+
+  // Always fetch articles on mount to get latest data (client-side)
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        const { data, error } = await supabase
+          .from('articles')
+          .select('id,title,slug,excerpt,cover_url,category,published_at')
+          .not('published_at', 'is', null)
+          .order('published_at', { ascending: false });
+        
+        if (error) {
+          console.error('Error fetching articles:', error);
+          // If fetch fails, use initial articles as fallback
+          if (initialArticles.length > 0) {
+            setArticles(initialArticles);
+            setFilteredArticles(initialArticles);
+          }
+        } else if (data) {
+          console.log('Fetched articles:', data.length, data);
+          setArticles(data || []);
+          setFilteredArticles(data || []);
+        }
+      } catch (err) {
+        console.error('Unexpected error fetching articles:', err);
+        // Fallback to initial articles
+        if (initialArticles.length > 0) {
+          setArticles(initialArticles);
+          setFilteredArticles(initialArticles);
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+    // Always fetch to get latest articles
+    fetchArticles();
+  }, []);
 
   const categories = [
     { id: 'all', name: 'All News', count: articles.length },
@@ -155,7 +194,14 @@ export default function NewsPage({ articles = [], seo = {} }) {
 
       {/* News Grid */}
       <section className="container-page pb-16">
-        {filteredArticles.length > 1 ? (
+        {loading ? (
+          <Reveal>
+            <div className="text-center py-16">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-700 mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading articles...</p>
+            </div>
+          </Reveal>
+        ) : filteredArticles.length > 1 ? (
           <>
             <Reveal>
               <h2 className="text-2xl font-bold text-navy-900 mb-8">Latest News</h2>
@@ -272,6 +318,7 @@ export async function getStaticProps() {
   const { data } = await supabase
     .from('articles')
     .select('id,title,slug,excerpt,cover_url,category,published_at')
+    .not('published_at', 'is', null)
     .order('published_at', { ascending: false });
 
   const { data: seoRows } = await supabase

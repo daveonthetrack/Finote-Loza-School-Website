@@ -1,0 +1,5 @@
+{
+  "/admin/announcements": [
+    "static/chunks/pages/admin/announcements.js"
+  ]
+}

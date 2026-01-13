@@ -48,7 +48,13 @@ export default function FacultyDirectory() {
         office: teacher.office || 'N/A',
         education: teacher.education || 'N/A',
         experience: teacher.experience || 'N/A',
-        specialties: teacher.subjects ? teacher.subjects.split(',').map(s => s.trim()) : ['General Education'],
+        specialties: teacher.subjects 
+          ? (typeof teacher.subjects === 'string' 
+              ? teacher.subjects.split(',').map(s => s.trim())
+              : Array.isArray(teacher.subjects)
+              ? teacher.subjects
+              : ['General Education'])
+          : ['General Education'],
         bio: teacher.bio || `Experienced educator specializing in ${teacher.department || 'general education'}.`,
         image: teacher.photo_url || `https://ui-avatars.com/api/?name=${teacher.first_name}+${teacher.last_name}&background=f3f4f6&color=374151&size=300`
       })) || [];

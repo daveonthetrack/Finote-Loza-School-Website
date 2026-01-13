@@ -42,6 +42,7 @@ export default function AdminLayout({ children }) {
               <NavLink href="/admin/announcements" label="Announcements" />
               <NavLink href="/admin/assignments" label="Assignments" />
               <NavLink href="/admin/grades" label="Grades" />
+              <NavLink href="/admin/librarians" label="Librarians" />
               <NavLink href="/admin/teacher-debug" label="Teacher Debug" />
               <NavLink href="/admin/content" label="Content" />
               <NavLink href="/admin/content-settings" label="Content Settings" />

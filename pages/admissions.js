@@ -23,10 +23,10 @@ export default function Admissions({ content = {}, seo = {} }) {
   ];
 
   const tuitionInfo = [
-    { grade: 'Kindergarten', tuition: '$12,500', fees: '$1,200', total: '$13,700' },
-    { grade: 'Elementary (1-5)', tuition: '$15,000', fees: '$1,500', total: '$16,500' },
-    { grade: 'Middle School (6-8)', tuition: '$17,500', fees: '$1,800', total: '$19,300' },
-    { grade: 'High School (9-12)', tuition: '$20,000', fees: '$2,000', total: '$22,000' }
+    { grade: 'Kindergarten', tuition: 'ETB 25,000', fees: 'ETB 3,000', total: 'ETB 28,000' },
+    { grade: 'Elementary (1-5)', tuition: 'ETB 45,000', fees: 'ETB 5,000', total: 'ETB 50,000' },
+    { grade: 'Middle School (6-8)', tuition: 'ETB 65,000', fees: 'ETB 7,000', total: 'ETB 72,000' },
+    { grade: 'High School (9-12)', tuition: 'ETB 85,000', fees: 'ETB 10,000', total: 'ETB 95,000' }
   ];
 
   const financialAidTypes = [
@@ -157,7 +157,10 @@ export default function Admissions({ content = {}, seo = {} }) {
                 </div>
               </div>
               <p className="mt-4 text-sm text-gray-600">
-                * Fees include technology, activities, and materials. Payment plans available.
+                * Fees include technology, activities, and materials. Payment plans available (monthly, quarterly, or semester-based).
+              </p>
+              <p className="mt-2 text-sm text-gray-600">
+                ** All amounts are in Ethiopian Birr (ETB). Tuition can be paid in installments throughout the academic year.
               </p>
             </div>
           </Reveal>

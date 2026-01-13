@@ -23,6 +23,7 @@ export default function Navbar() {
           <Link href="/about" className="hover:text-gold-300">About</Link>
           <Link href="/admissions" className="hover:text-gold-300">Admissions</Link>
           <Link href="/online-application" className="hover:text-gold-300">Apply</Link>
+          <Link href="/library" className="hover:text-gold-300">Library</Link>
           <Link href="/faculty-directory" className="hover:text-gold-300">Faculty</Link>
           <Link href="/news" className="hover:text-gold-300">News</Link>
           <Link href="/gallery" className="hover:text-gold-300">Gallery</Link>
@@ -59,6 +60,7 @@ export default function Navbar() {
             <Link onClick={() => setOpen(false)} href="/about" className="hover:text-gold-300">About</Link>
             <Link onClick={() => setOpen(false)} href="/admissions" className="hover:text-gold-300">Admissions</Link>
             <Link onClick={() => setOpen(false)} href="/online-application" className="hover:text-gold-300">Apply</Link>
+            <Link onClick={() => setOpen(false)} href="/library" className="hover:text-gold-300">Library</Link>
             <Link onClick={() => setOpen(false)} href="/faculty-directory" className="hover:text-gold-300">Faculty</Link>
             <Link onClick={() => setOpen(false)} href="/news" className="hover:text-gold-300">News</Link>
             <Link onClick={() => setOpen(false)} href="/gallery" className="hover:text-gold-300">Gallery</Link>
