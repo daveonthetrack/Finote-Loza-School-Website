@@ -56,8 +56,14 @@ export default function About({ content = {}, seo = {} }) {
           </Reveal>
           <Reveal type="slide-right" delay={100}>
             <div className="card p-6">
-              <div className="h-80 w-full rounded-lg bg-gradient-to-br from-gold-100 to-navy-100 flex items-center justify-center">
-                <span className="text-gray-500">School Campus Image</span>
+              <div className="relative h-80 w-full rounded-lg overflow-hidden bg-gray-100">
+                <Image
+                  src="/about.jpg"
+                  alt="Finote Loza School students"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           </Reveal>
