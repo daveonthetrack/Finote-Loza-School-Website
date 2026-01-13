@@ -211,9 +211,9 @@ begin
 
   v_due := coalesce(p_due_at, now() + interval '14 days');
 
-  insert into public.library_loans(copy_id, student_id, due_at, checked_out_by)
+  insert into public.library_loans as l (copy_id, student_id, due_at, checked_out_by)
   values (v_copy_id, p_student_id, v_due, auth.uid())
-  returning id, p_copy_code, p_student_id, checked_out_at, due_at
+  returning l.id, p_copy_code, p_student_id, l.checked_out_at, l.due_at
     into loan_id, copy_code, student_id, checked_out_at, due_at;
 
   return next;
