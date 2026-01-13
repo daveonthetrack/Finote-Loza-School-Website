@@ -6,20 +6,18 @@ import { useState } from 'react';
 export default function Navbar() {
   const { settings } = useSettings();
   const [open, setOpen] = useState(false);
+  const logoSrc = settings?.logo_url || '/logo.png';
+  const schoolName = settings?.school_name || 'Finote Loza School';
   return (
     <header className="bg-navy-700/95 backdrop-blur text-white sticky top-0 z-40">
       <div className="container-page flex items-center justify-between py-3">
                 <Link href="/" className="flex items-center gap-3">
                   <span className="relative block h-10 w-[132px]">
                     <span className="absolute -bottom-12 left-1 block h-[110px] w-[110px] rounded-full overflow-hidden bg-white">
-                      {settings?.logo_url ? (
-                        <Image src={settings.logo_url} alt="Finote Loza School" fill className="object-cover" priority />
-                      ) : (
-                        <span className="flex h-full w-full items-center justify-center bg-gold-500 text-navy-900 font-semibold text-3xl">FL</span>
-                      )}
+                      <Image src={logoSrc} alt={schoolName} fill className="object-cover" priority />
                     </span>
                   </span>
-                  <span className="font-display text-xl">{settings?.school_name || 'Finote Loza School'}</span>
+                  <span className="font-display text-xl">{schoolName}</span>
                 </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <Link href="/about" className="hover:text-gold-300">About</Link>

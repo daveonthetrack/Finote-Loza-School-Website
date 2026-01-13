@@ -4,7 +4,8 @@ export default function Document() {
   const siteName = 'Finote Loza School';
   const siteDescription = 'Excellence in Education';
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const ogImage = `${siteUrl}/og-image.png`;
+  // Use the same logo as the social/thumbnail preview.
+  const ogImage = `${siteUrl}/logo.png`;
 
   return (
     <Html lang="en">

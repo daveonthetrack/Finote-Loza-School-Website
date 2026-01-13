@@ -403,7 +403,15 @@ export default function StudentDetail() {
               <div className="card p-6">
                 <p className="font-semibold mb-3">ID Card Preview</p>
                 <div className="border rounded-xl p-3 bg-white" style={{ width: 320 }}>
-                  <div className="bg-navy-900 text-white px-3 py-2 rounded-md mb-2 flex items-center gap-2"><div className="w-6 h-6 rounded-full bg-gold-400 text-navy-900 flex items-center justify-center font-bold">FL</div> <div className="font-semibold">Finote Loza School</div></div>
+                  <div className="bg-navy-900 text-white px-3 py-2 rounded-md mb-2 flex items-center gap-2">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={settings?.logo_url || '/logo.png'}
+                      alt={settings?.school_name || 'Finote Loza School'}
+                      className="w-6 h-6 rounded-full bg-white object-cover"
+                    />
+                    <div className="font-semibold">{settings?.school_name || 'Finote Loza School'}</div>
+                  </div>
                   <div className="aspect-[16/9] bg-gray-100 rounded mb-2 overflow-hidden">
                     {student.photo_url && <img src={student.photo_url} className="w-full h-full object-cover" />}
                   </div>
