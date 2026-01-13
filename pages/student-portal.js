@@ -248,7 +248,7 @@ export default function StudentPortal() {
     <Layout>
       <StudentGuard>
         {me && (
-          <section className="bg-navy-900 text-white py-6 md:py-8">
+          <section className="bg-navy-900 text-white pt-20 md:pt-24 pb-6 md:pb-8">
             <div className="container-page flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
               <div className="flex items-center gap-4 md:gap-6 w-full md:w-auto">
                 <div className="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden bg-white/10 flex-shrink-0">
@@ -290,19 +290,6 @@ export default function StudentPortal() {
             </div>
           </section>
         )}
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-navy-900 to-navy-700 text-white py-12 md:py-20">
-        <div className="container-page">
-          <Reveal>
-            <h1 className="heading-section text-white">Student Portal</h1>
-            <p className="mt-4 text-lg md:text-xl text-navy-100 max-w-3xl">
-              Welcome back, {me?.first_name} {me?.last_name}! Access your assignments, 
-              grades, and stay updated with school announcements.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Student Info Cards */}
       <section className="container-page py-6 md:py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
