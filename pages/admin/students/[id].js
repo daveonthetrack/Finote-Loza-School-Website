@@ -171,8 +171,6 @@ export default function StudentDetail() {
     if (!s) return;
     const schoolName = settings?.school_name || 'Finote Loza School';
     const logoUrl = settings?.logo_url || '';
-    const siteUrl = settings?.site_url || '';
-    const qrUrl = siteUrl ? `${siteUrl.replace(/\/$/, '')}/news` : '';
 
     openStudentIdCardPrintWindow(s, {
       schoolName,
@@ -180,7 +178,7 @@ export default function StudentDetail() {
       website: 'www.finoteloza.edu',
       phone: settings?.contact_phone || '+251 11 123 4567',
       address: settings?.address || 'Addis Ababa, Ethiopia',
-      qrUrl,
+      // QR encodes the Student ID by default
     });
   }
 
