@@ -3,10 +3,13 @@ import AdminGuard from '@/components/AdminGuard';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '@/lib/supabaseClient';
+import { useSettings } from '@/lib/settingsContext';
+import { openStudentIdCardPrintWindow } from '@/lib/printStudentIdCard';
 
 export default function StudentDetail() {
   const router = useRouter();
   const { id } = router.query;
+  const { settings } = useSettings();
   const [student, setStudent] = useState(null);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -165,38 +168,20 @@ export default function StudentDetail() {
 
   function printIdCard() {
     const s = student;
-    const w = window.open('', '_blank');
-    w.document.write(`
-      <html><head><title>ID Card</title>
-      <style>
-        body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:#f3f4f6; padding:24px}
-        .card{width:340px;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 10px 20px rgba(0,0,0,.08)}
-        .top{background:#0b1b3f;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px}
-        .logo{width:36px;height:36px;border-radius:9999px;background:#f5cf5d;color:#0b1b3f;display:flex;align-items:center;justify-content:center;font-weight:800}
-        .school{font-weight:700}
-        .photo{width:100%;height:180px;background:#f3f4f6;object-fit:cover}
-        .info{padding:12px 16px}
-        .row{margin-top:6px}
-        .label{font-size:12px;color:#6b7280}
-        .value{font-weight:600;color:#0b1b3f}
-        .footer{padding:12px 16px;border-top:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#6b7280}
-      </style>
-      </head><body>
-      <div class="card">
-        <div class="top"><div class="logo">FL</div><div class="school">Finote Loza School</div></div>
-        ${s.photo_url ? `<img class="photo" src="${s.photo_url}" alt="${s.first_name} ${s.last_name}"/>` : `<div class="photo"></div>`}
-        <div class="info">
-          <div class="row"><span class="label">Student</span><div class="value">${s.first_name} ${s.last_name}</div></div>
-          <div class="row"><span class="label">ID</span><div class="value">${s.student_id}</div></div>
-          <div class="row"><span class="label">Grade</span><div class="value">${s.grade_level || '-'}</div></div>
-          <div class="row"><span class="label">Homeroom</span><div class="value">${s.homeroom || '-'}</div></div>
-        </div>
-        <div class="footer"><div>www.finoteloza.edu</div><div>${new Date().getFullYear()}</div></div>
-      </div>
-      <script>window.print()</script>
-      </body></html>
-    `);
-    w.document.close();
+    if (!s) return;
+    const schoolName = settings?.school_name || 'Finote Loza School';
+    const logoUrl = settings?.logo_url || '';
+    const siteUrl = settings?.site_url || '';
+    const qrUrl = siteUrl ? `${siteUrl.replace(/\/$/, '')}/news` : '';
+
+    openStudentIdCardPrintWindow(s, {
+      schoolName,
+      logoUrl,
+      website: 'www.finoteloza.edu',
+      phone: settings?.contact_phone || '+251 11 123 4567',
+      address: settings?.address || 'Addis Ababa, Ethiopia',
+      qrUrl,
+    });
   }
 
   if (!student) return (

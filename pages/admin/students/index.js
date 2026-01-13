@@ -3,8 +3,11 @@ import AdminGuard from '@/components/AdminGuard';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import { useSettings } from '@/lib/settingsContext';
+import { openStudentIdCardPrintWindow } from '@/lib/printStudentIdCard';
 
 export default function AdminStudents() {
+  const { settings } = useSettings();
   const [students, setStudents] = useState([]);
   const [form, setForm] = useState({ firstName: '', lastName: '', gradeLevel: '', homeroom: '' });
   const [creating, setCreating] = useState(false);
@@ -114,27 +117,19 @@ export default function AdminStudents() {
   }
 
   function printIdCard(s) {
-    const w = window.open('', '_blank');
-    w.document.write(`
-      <html><head><title>ID Card</title>
-      <style>
-        body{font-family:sans-serif}
-        .card{width:320px;border:1px solid #e5e7eb;border-radius:12px;padding:16px}
-        .title{font-weight:700;color:#0b1b3f}
-        .row{margin-top:6px}
-        .small{color:#6b7280;font-size:12px}
-      </style>
-      </head><body>
-      <div class="card">
-        <div class="title">Finote Loza School</div>
-        <div class="row"><strong>Student:</strong> ${s.first_name} ${s.last_name}</div>
-        <div class="row"><strong>ID:</strong> ${s.student_id}</div>
-        <div class="row small">Grade: ${s.grade_level || '-'} | Homeroom: ${s.homeroom || '-'}</div>
-      </div>
-      <script>window.print()</script>
-      </body></html>
-    `);
-    w.document.close();
+    const schoolName = settings?.school_name || 'Finote Loza School';
+    const logoUrl = settings?.logo_url || '';
+    const siteUrl = settings?.site_url || '';
+    const qrUrl = siteUrl ? `${siteUrl.replace(/\/$/, '')}/student-portal` : '';
+
+    openStudentIdCardPrintWindow(s, {
+      schoolName,
+      logoUrl,
+      website: 'www.finoteloza.edu',
+      phone: settings?.contact_phone || '+251 11 123 4567',
+      address: settings?.address || 'Addis Ababa, Ethiopia',
+      qrUrl,
+    });
   }
 
   // actions moved to student profile page
