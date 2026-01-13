@@ -12,6 +12,36 @@ export default function About({ content = {}, seo = {} }) {
     { title: 'Community Partnership', description: 'A strong relationship with parents and the community to support every learner’s growth.' }
   ];
 
+  const programs = [
+    {
+      title: 'Kindergarten (KG)',
+      subtitle: 'Early years foundation',
+      items: ['Phonics & early literacy', 'Numbers & basic math', 'Art, music & movement', 'Social skills & routines'],
+    },
+    {
+      title: 'Elementary (1–5)',
+      subtitle: 'Strong fundamentals',
+      items: ['Reading comprehension', 'Math mastery', 'Science & discovery', 'Writing and communication'],
+    },
+    {
+      title: 'Middle School (6–8)',
+      subtitle: 'Confidence + study skills',
+      items: ['Subject-based teaching', 'Projects & group work', 'Study habits and discipline', 'Continuous assessment'],
+    },
+    {
+      title: 'High School (9–12)',
+      subtitle: 'Ministry exam readiness',
+      items: ['Focused exam prep', 'Practice tests & review', 'Guidance and mentorship', 'University/career awareness'],
+    },
+  ];
+
+  const story = [
+    { year: '2004', text: 'Finote Loza School opens with a focus on discipline, academic excellence, and strong teacher support.' },
+    { year: '2012', text: 'Expanded grade levels and introduced structured tutoring & revision programs for upper grades.' },
+    { year: '2018', text: 'Strengthened reading culture with library time and extracurricular clubs.' },
+    { year: 'Today', text: 'Serving families in Addis Ababa with KG–12 programs and a strong community partnership.' },
+  ];
+
   const faculty = [
     { name: 'Ato Dawit Mekonnen', role: 'Principal', experience: '15 years', specialty: 'Educational Leadership' },
     { name: 'W/ro Hanna Tesfaye', role: 'Academic Coordinator', experience: '12 years', specialty: 'Curriculum & Student Support' },
@@ -98,8 +128,62 @@ export default function About({ content = {}, seo = {} }) {
         </div>
       </section>
 
-      {/* Community & Approach */}
+      {/* Programs */}
+      <section className="bg-white py-16">
+        <div className="container-page">
+          <Reveal>
+            <SectionHeading
+              title="Programs (KG–12)"
+              subtitle="Structured learning for every stage—from early years to ministry exam preparation."
+            />
+          </Reveal>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {programs.map((p, idx) => (
+              <Reveal key={p.title} delay={idx * 80}>
+                <div className="card p-6 h-full">
+                  <p className="font-semibold text-navy-900">{p.title}</p>
+                  <p className="text-sm text-gray-600 mt-1">{p.subtitle}</p>
+                  <ul className="mt-4 space-y-2 text-sm text-gray-700">
+                    {p.items.map((it) => (
+                      <li key={it} className="flex gap-2">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold-600 shrink-0" />
+                        <span className="min-w-0">{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story */}
       <section className="bg-gray-50 py-16">
+        <div className="container-page">
+          <Reveal>
+            <SectionHeading
+              title="Our Story"
+              subtitle="A steady focus on learning, discipline, and community—serving families in Addis Ababa."
+            />
+          </Reveal>
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {story.map((s, idx) => (
+              <Reveal key={s.year} delay={idx * 90}>
+                <div className="card p-6 flex gap-4">
+                  <div className="w-14 h-14 rounded-xl bg-white border border-gray-200 flex items-center justify-center shrink-0">
+                    <span className="font-bold text-navy-900">{s.year}</span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">{s.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Community & Approach */}
+      <section className="bg-white py-16">
         <div className="container-page">
           <Reveal>
             <SectionHeading
@@ -114,8 +198,8 @@ export default function About({ content = {}, seo = {} }) {
                 description: 'Clear rules, consistent follow-up, and respectful communication help students focus and grow.',
               },
               {
-                title: 'Parent partnership',
-                description: 'Regular updates, meetings, and shared responsibility between home and school.',
+                title: 'Languages & learning',
+                description: 'We support strong English progress while respecting local languages—building confidence in speaking, reading, and writing.',
               },
               {
                 title: 'Clubs & activities',
@@ -134,7 +218,7 @@ export default function About({ content = {}, seo = {} }) {
       </section>
 
       {/* Values */}
-      <section className="bg-white py-16">
+      <section className="bg-gray-50 py-16">
         <div className="container-page">
           <Reveal>
             <SectionHeading title="Our Core Values" subtitle="The principles that guide everything we do" />
