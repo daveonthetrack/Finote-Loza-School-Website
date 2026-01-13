@@ -35,6 +35,8 @@ export default function Footer() {
             <li><a href="/student/login" className="hover:text-gold-300">Student Portal</a></li>
             <li><a href="/parent/login" className="hover:text-gold-300">Parent Portal</a></li>
             <li><a href="/teacher/login" className="hover:text-gold-300">Teacher Portal</a></li>
+            <li><a href="/librarian/login" className="hover:text-gold-300">Librarian Portal</a></li>
+            <li><a href="/library" className="hover:text-gold-300">Library</a></li>
             <li><a href="/online-application" className="hover:text-gold-300">Online Application</a></li>
             <li><a href="/faculty-directory" className="hover:text-gold-300">Faculty Directory</a></li>
           </ul>
