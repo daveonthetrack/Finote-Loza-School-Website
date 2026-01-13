@@ -6,23 +6,23 @@ import { supabase } from '@/lib/supabaseClient';
 
 export default function About({ content = {}, seo = {} }) {
   const values = [
-    { title: 'Academic Excellence', description: 'Rigorous curriculum designed to challenge and inspire students to reach their highest potential.' },
-    { title: 'Character Development', description: 'Building integrity, respect, and responsibility through daily practice and community service.' },
-    { title: 'Innovation & Creativity', description: 'Encouraging critical thinking, problem-solving, and creative expression in all subjects.' },
-    { title: 'Community & Service', description: 'Fostering a sense of belonging and commitment to making a positive impact in the world.' }
+    { title: 'Academic Excellence', description: 'Strong foundations in literacy, numeracy, and science aligned with Ethiopia’s national standards.' },
+    { title: 'Bilingual Learning', description: 'Supportive English instruction with respect for local languages and clear communication at home and school.' },
+    { title: 'Character & Culture', description: 'Respect, responsibility, and pride in Ethiopian heritage—built through daily routines and mentorship.' },
+    { title: 'Community Partnership', description: 'A strong relationship with parents and the community to support every learner’s growth.' }
   ];
 
   const faculty = [
-    { name: 'Dr. Sarah Johnson', role: 'Principal', experience: '15 years', specialty: 'Educational Leadership' },
-    { name: 'Mr. David Chen', role: 'Mathematics Department Head', experience: '12 years', specialty: 'Advanced Mathematics' },
-    { name: 'Ms. Emily Rodriguez', role: 'Science Teacher', experience: '8 years', specialty: 'Biology & Chemistry' },
-    { name: 'Dr. Michael Thompson', role: 'English Department Head', experience: '10 years', specialty: 'Literature & Writing' }
+    { name: 'Ato Dawit Mekonnen', role: 'Principal', experience: '15 years', specialty: 'Educational Leadership' },
+    { name: 'W/ro Hanna Tesfaye', role: 'Academic Coordinator', experience: '12 years', specialty: 'Curriculum & Student Support' },
+    { name: 'Ato Samuel Bekele', role: 'Mathematics Department Head', experience: '11 years', specialty: 'Mathematics & Problem Solving' },
+    { name: 'W/ro Selamawit Abebe', role: 'Science Teacher', experience: '9 years', specialty: 'Biology & Chemistry' }
   ];
 
   const testimonials = [
-    { quote: "Finote Loza School has transformed my daughter into a confident, curious learner. The teachers truly care about each student's success.", author: "Maria Santos", role: "Parent" },
-    { quote: "The academic rigor combined with character development has prepared me well for university. I'm grateful for the foundation I received.", author: "Ahmed Hassan", role: "Graduate, Class of 2023" },
-    { quote: "The supportive community and innovative teaching methods make learning exciting. I love coming to school every day!", author: "Sophie Kim", role: "Grade 10 Student" }
+    { quote: "Finote Loza School helped my daughter build confidence in English and strong study habits. The teachers communicate with us and really follow up.", author: "W/ro Meron Girma", role: "Parent" },
+    { quote: "The ministry exam preparation and the support from teachers made a big difference. I felt ready and calm on exam day.", author: "Yared Tadesse", role: "Graduate" },
+    { quote: "I like the library time and group projects. We learn seriously, but we also have clubs and activities.", author: "Liya Kebede", role: "Grade 10 Student" }
   ];
 
   return (
@@ -33,8 +33,13 @@ export default function About({ content = {}, seo = {} }) {
           <Reveal>
             <h1 className="heading-section text-white">{content['about.hero.title'] || 'About Finote Loza School'}</h1>
             <p className="mt-4 text-xl text-navy-100 max-w-3xl">
-              {content['about.hero.subtitle'] || 'Founded with a commitment to academic excellence and character development, we provide a nurturing environment where students thrive and discover their potential.'}
+              {content['about.hero.subtitle'] || 'Based in Addis Ababa, Ethiopia, Finote Loza School is committed to strong academics, discipline, and a supportive community that helps students thrive.'}
             </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="/admissions" className="btn-primary">Admissions</a>
+              <a href="/online-application" className="btn-secondary bg-white/10 border-white/20 text-white hover:bg-white/15">Apply Online</a>
+              <a href="/contact" className="btn-secondary bg-white/10 border-white/20 text-white hover:bg-white/15">Contact</a>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -46,12 +51,37 @@ export default function About({ content = {}, seo = {} }) {
             <div>
               <h2 className="text-3xl font-bold text-navy-900 mb-4">Our Mission</h2>
               <p className="text-gray-700 leading-relaxed mb-6">
-                {content['about.mission'] || 'To empower students to become compassionate, confident, and creative leaders through rigorous academics, character development, and community engagement.'}
+                {content['about.mission'] || 'To prepare students for success in school and life through strong academics, good character, and daily support—working closely with families and the community.'}
               </p>
               <h2 className="text-3xl font-bold text-navy-900 mb-4">Our Vision</h2>
               <p className="text-gray-700 leading-relaxed">
-                {content['about.vision'] || 'To be a leading educational institution that prepares students for success in higher education and life, while fostering a lifelong love of learning.'}
+                {content['about.vision'] || 'To be a trusted school in Ethiopia known for excellent teaching, clear discipline, and graduates who are confident, responsible, and ready for higher education.'}
               </p>
+
+              <div className="mt-8 grid gap-3">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 w-8 h-8 rounded-full bg-gold-100 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-gold-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-navy-900">Ministry exam readiness</p>
+                    <p className="text-sm text-gray-600">Structured review sessions, practice exams, and personalized support.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 w-8 h-8 rounded-full bg-navy-50 border border-navy-100 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0 0C10.832 19.477 9.246 20 7.5 20S4.168 19.477 3 18.253m0-13C4.168 4.477 5.754 4 7.5 4s3.332.477 4.5 1.253m0 13C13.168 19.477 14.754 20 16.5 20c1.746 0 3.332-.477 4.5-1.253m0-13C19.832 4.477 18.246 4 16.5 4c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-navy-900">Library & reading culture</p>
+                    <p className="text-sm text-gray-600">Age-appropriate books and guided reading time to build confidence.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </Reveal>
           <Reveal type="slide-right" delay={100}>
@@ -65,13 +95,51 @@ export default function About({ content = {}, seo = {} }) {
                   priority
                 />
               </div>
+              <p className="text-xs text-gray-500 mt-3">
+                Students building confidence through teamwork, school culture, and daily learning.
+              </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Values */}
+      {/* Community & Approach */}
       <section className="bg-gray-50 py-16">
+        <div className="container-page">
+          <Reveal>
+            <SectionHeading
+              title="A School Community in Addis Ababa"
+              subtitle="Practical learning, clear expectations, and support for every student."
+            />
+          </Reveal>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: 'Strong routines & discipline',
+                description: 'Clear rules, consistent follow-up, and respectful communication help students focus and grow.',
+              },
+              {
+                title: 'Parent partnership',
+                description: 'Regular updates, meetings, and shared responsibility between home and school.',
+              },
+              {
+                title: 'Clubs & activities',
+                description: 'Reading club, science projects, art, and sports to support well-rounded development.',
+              },
+            ].map((item, idx) => (
+              <Reveal key={item.title} delay={idx * 100}>
+                <div className="card p-6">
+                  <p className="font-semibold text-navy-900">{item.title}</p>
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">{item.description}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="bg-white py-16">
         <div className="container-page">
           <Reveal>
             <SectionHeading title="Our Core Values" subtitle="The principles that guide everything we do" />
@@ -143,10 +211,10 @@ export default function About({ content = {}, seo = {} }) {
         </Reveal>
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { number: '500+', label: 'Students' },
-            { number: '50+', label: 'Faculty' },
-            { number: '25+', label: 'Years of Excellence' },
-            { number: '95%', label: 'University Acceptance' }
+            { number: '800+', label: 'Students' },
+            { number: '70+', label: 'Teachers & Staff' },
+            { number: '20+', label: 'Years Serving Families' },
+            { number: '98%', label: 'Ministry Exam Pass Rate' }
           ].map((stat, idx) => (
             <Reveal key={stat.label} delay={idx * 100}>
               <div className="text-center">
@@ -155,6 +223,11 @@ export default function About({ content = {}, seo = {} }) {
               </div>
             </Reveal>
           ))}
+        </div>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <a href="/news" className="btn-secondary">Read School News</a>
+          <a href="/library" className="btn-secondary">Visit the Library</a>
+          <a href="/online-application" className="btn-primary">Apply Now</a>
         </div>
       </section>
     </Layout>
